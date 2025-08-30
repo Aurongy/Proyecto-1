@@ -1,0 +1,160 @@
+@startuml
+
+title \n<size:50><b>Comité Olímpico Guatemalteco</b>\n\n<size:30><b>Sistema de Control de Registro de Atletas</b>
+
+class InformacionAdministrativa{
+    #String Codigo de Atleta;
+    #String InformacionFisica;
+    #String InformacionDeportiva;
+    #String RegistrarSesionEntremaniento;
+    #String Fecha de registro;
+    #String Datos familiares;
+    #GuardarInformacion();
+}
+class InformacionMedica{
+    #String Codigo de Atleta;
+    #String Tipo de sangre;
+    #String Alergica;
+    #String Perfil Biofisico;
+    +MostrarInfromacionMedica();
+}
+class InformacionDeportiva{
+    +String Codigo de Atleta;
+    +String Disciplina;
+    +String Posición/Especialidad;
+    +String HistorialDeportivo;
+    +MostrarInfromacionDeportiva();
+}
+class DeportedeEquipo{
+    +String Futbol;
+    +String Voleibol;
+    +String Baloncesto;
+    +String Balonmano;
+    #GuardarInformacionEquipo();
+}
+class Disciplina{
+    +String Atletismo;
+    +String DeportesAcuaticos;
+    +String FuerzaYCombate;
+    +String DeportesdeRaqueta;
+    +String DeportesdePrecisión;
+    +String Gimnasia;
+    +String Ciclismo;
+    +String DeportedeEquipo;
+    #ElegirDisciplina();
+}
+class Atletismo{
+    +String Carreras;
+    +String Saltos;
+    +String Lanzamiento;
+    +String Marcha;
+    +String Marraton;
+    #GuardarInformacionAtletismo();
+}
+class DeportesAcuaticos{
+    +String Natacion;
+    +String Clavados;
+    +String AguasAbiertas;
+    #GuardarInformacionAcuatico();
+}
+class FuerzaYCombate{
+    +String Levantamiento de pesas;
+    +String Boxeo;
+    +String Judo;
+    +String Taekwondo;
+    +String LuchaLibre;
+    #GuardarInformacionFuerzayCombate();
+}
+class DeportesdeRaqueta{
+    +String Tenis;
+    +String Bádminton;
+    +String Tenis de mesa;
+    #GuardarInformacionDeporteRaqueta();
+}
+class DeportesdePrecisión{
+    +String Tiro con Arco;
+    +String Tiro deportivo;
+    #GuardarInformacionDeportePrecision();
+}
+class Ciclismo{
+    +String Ciclismo de ruta;
+    +String Ciclismo de pista;
+    +String Ciclismo de montaña;
+    #GuardarInformacionCiclismo();
+}
+class Gimnasia{
+    +String Gimnasia Artistica;
+    +String Gimnasia Ritmica;
+    +String Trampolin;
+    #GuardarInformacionGimnasia();
+}
+class RegistrarAtletas{
+    #String Nombre Completo;
+    #int Edad;
+    #String No. Identificación DPI/Pasaporte;
+    #String fecha de Nacimiento;
+    #String Sexo;
+    #String Nacionalidad;
+    #String Direccion de residencia;
+    #String Telefono y Correo Electronico;
+    #String Disciplina;
+    #String Datos familiares;
+    #GuardarInformacionAtleta();
+}
+class InformacionFisica{
+    +String Codigo de Atleta;
+    +Double Peso;
+    +Double Altura;
+    +String IMC
+    +MostrarInfromacionMedica();
+}
+class RegistrarSesionEntremaniento{
+    #String NombreAtleta;
+    #String Codigo de Atleta;
+    #String ID sesion;
+    #String Fecha;
+    #String Hora Inicio y Fin;
+    #String Lugar;
+    #String Disciplina;
+    #String Entrenador reponsable;
+    #GuardarRegistroEntrenamiento();
+}
+class Estadisticas{
+    #String NombreAtleta;
+    #String Codigo de Atleta;
+    #String Disciplina;
+    #String Fecha;
+    #String Promedio;
+    #String Ritmo;
+    #String Categoria;
+    #String Entrenamiento mas bajo;
+    #String Entrenamiento mas alto;
+    #String Comparacion de datos;
+    #String Observacion;
+    +MostrarResumen();
+}
+
+InformacionAdministrativa"1"---- "*"RegistrarAtletas
+RegistrarAtletas-----|>InformacionMedica
+RegistrarAtletas-----|>Disciplina
+RegistrarAtletas-----|>InformacionFisica
+Disciplina.....|>Atletismo
+Disciplina.....|>DeportesAcuaticos
+Disciplina.....|>FuerzaYCombate
+Disciplina.....|>DeportesdeRaqueta
+Disciplina.....|>DeportesdePrecisión
+Disciplina.....|>Gimnasia
+Disciplina.....|>Ciclismo
+Disciplina.....|>DeportedeEquipo
+Atletismo ---->Estadisticas
+DeportesAcuaticos ---->Estadisticas
+FuerzaYCombate ---->Estadisticas
+DeportesdeRaqueta ---->Estadisticas
+DeportesdePrecisión ---->Estadisticas
+Gimnasia ---->Estadisticas
+DeportedeEquipo ---->Estadisticas
+InformacionAdministrativa----->RegistrarSesionEntremaniento
+InformacionDeportiva <|---Estadisticas
+
+
+@enduml
